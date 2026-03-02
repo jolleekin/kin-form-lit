@@ -12,6 +12,7 @@ export default function ({ content, head, title, url }: Lume.Data) {
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>${title ? title + " - Kin Form" : "Kin Form"}</title>
+        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="stylesheet" href="/css/prism/dark.css" id="prism" />
         <link rel="stylesheet" href="/global.css" />
         ${head ?? ""}
@@ -25,7 +26,7 @@ export default function ({ content, head, title, url }: Lume.Data) {
           setTheme(
             localStorage.theme === "dark" ||
               (!("theme" in localStorage) &&
-                matchMedia("(prefers-color-scheme: dark)").matches)
+                matchMedia("(prefers-color-scheme: dark)").matches),
           );
         </script>
       </head>
@@ -39,7 +40,8 @@ export default function ({ content, head, title, url }: Lume.Data) {
           <div class="w-full max-w-8xl mx-auto px-2 sm:px-4 lg:px-6">
             <nav class="flex justify-between h-14 px-2">
               <div class="flex items-center">
-                <a href="/" class="flex items-center">
+                <a href="/" class="flex items-center gap-2">
+                  <img src="/favicon.svg" alt="Kin Form" class="h-8 w-8" />
                   <span
                     class="text-xl font-bold bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent"
                     >Kin Form</span
@@ -50,7 +52,7 @@ export default function ({ content, head, title, url }: Lume.Data) {
                 <a
                   href="/docs/introduction/getting-started"
                   class="inline-flex items-center px-1 hover:text-primary ${url.includes(
-                    "/docs"
+                    "/docs",
                   )
                     ? "relative before:absolute before:start-0 before:bottom-0 before:end-0 before:rounded-full before:h-1 before:bg-primary"
                     : ""}"

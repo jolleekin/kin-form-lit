@@ -1,5 +1,9 @@
 # Kin Form
 
+<p align="center">
+<img src="website/src/favicon.svg" width="128" height="128" alt="Kin Form" />
+</p>
+
 A fast, flexible, and type-safe form management library for [Lit].
 
 ## Documentation

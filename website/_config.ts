@@ -17,9 +17,10 @@ const site = lume({ src: "./src", prettyUrls: false });
 site.use(
   modifyUrls({
     fn: (url: string) => (url.endsWith(".html") ? url.slice(0, -5) : url),
-  })
+  }),
 );
 
+site.add("favicon.svg");
 site.add("global.css");
 site.add("css/");
 site.add("img/");
@@ -36,7 +37,7 @@ site.use(
   prism({
     cssSelector: "code",
     theme: { name: "okaidia", cssFile: "code-dark.css" },
-  })
+  }),
 );
 
 // This plugin has a bug.
@@ -56,7 +57,7 @@ site.use(
         },
       },
     },
-  })
+  }),
 );
 
 export default site;
