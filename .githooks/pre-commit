@@ -1,0 +1,11 @@
+#!/usr/bin/env sh
+set -e
+
+# Resolve repository root and run tests in the form package
+ROOT=$(git rev-parse --show-toplevel)
+echo "Running form tests in $ROOT/form..."
+cd "$ROOT/form" || exit 1
+
+deno test
+
+exit 0
