@@ -39,9 +39,24 @@ export interface FieldOptions<
 }
 
 /**
- * A form field that manages a group of child form fields.
+ * A form field that manages a collection of child form fields, enabling the
+ * creation of nested form structures.
  *
- * This class also contains an array API for manipulating arrays.
+ * `FieldGroup` serves as a foundational building block for creating complex
+ * forms. It extends {@linkcode FormField}, which means it has all the same
+ * properties as a standard field (e.g., `value`, `touched`, `invalid`), but its
+ * value is typically an object that aggregates the values of its children.
+ *
+ * It acts as a parent container, tracking the collective state of its child
+ * fields. For example, a `FieldGroup` is considered `touched` if any of its
+ * child fields are touched. It is `invalid` if either its own validators fail
+ * or any of its child fields are invalid.
+ *
+ * Child fields are registered with the group using the {@linkcode field}
+ * directive, which links the child's state to the parent group.
+ *
+ * This class also provides an API for array manipulation (e.g., `insertItem`,
+ * `removeItem`), allowing it to manage dynamic lists of fields.
  */
 export abstract class FieldGroup<
   TValue,
@@ -100,22 +115,45 @@ export abstract class FieldGroup<
   #anyChildValidating = false;
 
   /**
-   * A directive that registers a child {@linkcode FormField} with this
-   * {@linkcode FieldGroup}.
+   * A Lit directive that registers a child {@linkcode FormField} with this
+   * {@linkcode FieldGroup}, binding them together.
    *
-   * The directive will set the following properties on the child field
-   * - {@linkcode dependents} (if provided)
-   * - {@linkcode disabled}
-   * - {@linkcode name}
-   * - {@linkcode FormField.parent parent}
-   * - {@linkcode value}
+   * This directive is the primary mechanism for building a nested form
+   * structure. When applied to a {@linkcode FormField} element, it establishes
+   * a parent-child relationship, allowing the `FieldGroup` to manage the
+   * child's state.
    *
-   * To override {@linkcode disabled} or {@linkcode value}, set them after this
-   * directive.
+   * The directive automatically configures the child field by setting the
+   * following properties based on the group's state and the provided options:
+   * - `name`: The key for this field within the group's value object.
+   * - `value`: Synchronizes the field's value with the corresponding value in
+   *   the group's `value` object on each render.
+   * - `disabled`: Inherits the disabled state from the group.
+   * - `parent`: A direct reference to this `FieldGroup` instance.
+   * - `dependents`: (Optional) A list of other fields that should be
+   *   re-validated when this field's value changes.
    *
-   * @param options.defaultValue The value to use in case the value for
-   * the form field is missing from {@link FieldGroup.value}.
-   * @param options.dependents Names of the form fields that depend on this field.
+   * @example
+   * ```html
+   * <form>
+   *   <text-field ${this.form.field("username")}></text-field>
+   *   <password-field ${this.form.field("password")}></password-field>
+   * </form>
+   * ```
+   *
+   * To override a property set by the directive (e.g., `disabled`), apply it
+   * after the directive:
+   *
+   * @example
+   * ```html
+   * <text-field ${this.form.field("username")} .disabled=${true}></text-field>
+   * ```
+   *
+   * @param name The deep key of the field within the group's value object.
+   * @param options Configuration for the field.
+   * @param options.defaultValue The value to use if the field's value is
+   *   missing from the parent group's `value`.
+   * @param options.dependents An array of other fields that depend on this one.
    *
    * @bound
    */
@@ -352,8 +390,7 @@ class FieldDirective<
     _form: FieldGroup<TParentValue>,
     _name: TName,
     _fieldOptions?: FieldOptions<TParentValue, TName>
-  ): void {
-  }
+  ): void {}
 
   override update(
     part: ElementPart,

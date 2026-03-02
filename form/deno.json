@@ -1,12 +1,8 @@
 {
   "name": "@kin/form",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "compilerOptions": {
-    "lib": [
-      "dom",
-      "deno.window",
-      "es2022"
-    ]
+    "lib": ["dom", "deno.window", "es2022"]
   },
   "exports": {
     "./elements/kin-field-group.ts": "./elements/kin-field-group.ts",

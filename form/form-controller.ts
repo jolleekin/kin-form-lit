@@ -15,7 +15,6 @@ import type { Validator } from "./form-field.ts";
 import type { ArrayOr, PromiseOr, ValidationError } from "./types.ts";
 import { deepEqual } from "./utils/deep-equal.ts";
 import { makeArray } from "./utils/misc.ts";
-import { on } from "./utils/event.ts";
 
 export interface FormControllerOptions<TValue> {
   /**
