@@ -1,5 +1,10 @@
 # Kin Form
 
+> [!WARNING]
+> This package is deprecated and no longer maintained. The "Kin Form" name
+> now belongs to a new, framework-agnostic successor at
+> [github.com/jolleekin/kin-form](https://github.com/jolleekin/kin-form).
+
 A fast, flexible, and type-safe form management library for [Lit].
 
 ## Documentation

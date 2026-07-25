@@ -1,5 +1,11 @@
 # Kin Form
 
+> [!WARNING]
+> This project is deprecated and no longer maintained. The "Kin Form" name
+> and logo now belong to a new, framework-agnostic successor at
+> [github.com/jolleekin/kin-form](https://github.com/jolleekin/kin-form).
+> This repository will remain available, read-only, as `kin-form-lit`.
+
 <p align="center">
 <img src="website/src/favicon.svg" width="128" height="128" alt="Kin Form" />
 </p>

@@ -31,9 +31,21 @@ export default function ({ content, head, title, url }: Lume.Data) {
         </script>
       </head>
       <body
-        class="m-0 min-h-dvh grid grid-cols-[100%] grid-rows-[auto_1fr_auto] overscroll-none
+        class="m-0 min-h-dvh grid grid-cols-[100%] grid-rows-[auto_auto_1fr_auto] overscroll-none
         bg-neutral-100 text-gray-700 dark:bg-neutral-900 dark:text-gray-200"
       >
+        <div
+          class="w-full text-center text-sm px-2 py-2 bg-amber-500/10 dark:bg-amber-400/15 text-amber-900 dark:text-amber-200"
+        >
+          Kin Form for Lit is deprecated and no longer maintained. Development
+          continues as a framework-agnostic library at
+          <a
+            class="font-semibold hover:underline"
+            href="https://github.com/jolleekin/kin-form"
+            target="_blank"
+            >github.com/jolleekin/kin-form</a
+          >.
+        </div>
         <header
           class="w-full sticky top-0 z-30 bg-neutral-100 dark:bg-neutral-900 inset-shadow-b dark:shadow-neutral-500"
         >
