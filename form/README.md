@@ -7,10 +7,6 @@
 
 A fast, flexible, and type-safe form management library for [Lit].
 
-## Documentation
-
-See the full documentation at [kin-form.deno.dev][website].
-
 ## Installation
 
 ```sh
@@ -87,4 +83,3 @@ export class FormDemo extends LitElement {
 ```
 
 [Lit]: https://lit.dev
-[website]: https://kin-form.deno.dev

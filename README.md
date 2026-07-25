@@ -12,10 +12,6 @@
 
 A fast, flexible, and type-safe form management library for [Lit].
 
-## Documentation
-
-See the full documentation at [kin-form.deno.dev](website).
-
 ## Monorepo
 
 This monorepo contains three packages
@@ -38,4 +34,3 @@ Once configured, each commit will run the `form` tests and abort the commit if t
 
 [Lit]: https://lit.dev
 [Lume]: https://lume.land/
-[website]: https://kin-form.deno.dev
